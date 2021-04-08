@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>Budget App</title>
+  </head>
+  <body>
+    {% block content %}
+      <div>
+        {% for i in inv_over_time %}
+          {{ titles }}
+          {{ i|safe }}
+        {% endfor %}
+      </div>
+      <div>
+        <img src= {{ url }} />
+      </div>
+    {% endblock %}
+  </body>
+</html>

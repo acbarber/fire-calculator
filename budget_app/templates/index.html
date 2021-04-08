@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+
+
+    <!-- Title Page-->
+    <title>FIRE Calculator</title>
+
+    <!-- Icons font CSS-->
+    <link href="../static/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="../static/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="../static/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="../static/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="../static/css/main.css" rel="stylesheet" media="all">
+
+    <link rel="icon" href="/home/genymoneyguy/templates/favicon.png" type="image/png" sizes="32x32" />
+
+</head>
+
+<body class="bg-gra-02">
+<div class="header"><div class="w-lg-80 mx-lg-auto"><div><h1>Gen Y Money Guy FIRE Retirement Calculator</h1></div></div></div>
+    <div class="page-wrapper p-t-10 p-b-10 font-poppins">
+        <div class="wrapper wrapper--w680">
+          <div class="left-ad"></div>
+            <div class="card card-4">
+                <div class="card-body">
+                  <h2 class="title">Net Income</h2>
+                  <form method="POST">
+                      <div class="row row-space">
+                          <div class="col-2">
+                              <div class="input-group">
+                                  <label class="label">{{form.income.label}}</label>
+                                  <div class=explanation>Pre-tax income</div>
+                                    <div class="input--style-4"><div class="form-field">{{ form.income(placeholder="65000") }}</div></div>
+                              </div>
+                          </div>
+                          <div class = "col-2">
+                            <div class="input-group">
+                                <label class="label">{{form.year.label}}</label>
+                                <div class="rs-select2 js-select-simple select--no-search">
+                                  {{form.year}}
+                                    <div class="select-dropdown"></div>
+                                </div>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="row row-space">
+                        <div class = "col-2">
+                          <div class="input-group">
+                              <label class="label">{{form.filing_status.label}}</label>
+                              <div class="rs-select2 js-select-simple select--no-search">
+                                {{form.filing_status}}
+                                  <div class="select-dropdown"></div>
+                              </div>
+                          </div>
+                        </div>
+                        <div class = "col-2">
+                          <div class="input-group">
+                              <label class="label">{{form.state.label}}</label>
+                              <div class="rs-select2 js-select-simple select--no-search">
+                                {{form.state}}
+                                  <div class="select-dropdown"></div>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      <h4 class="sub_title">-OR-</h4>
+                      <div class="col-2">
+                          <div class="input-group mb-3">
+                            <label class="label">{{form.net_income.label}}</label>
+                            <div class="input--style-4">
+                              <div class="input-group-prepend">
+                            <div class="form-field">{{ form.net_income(size=20) }}</div>
+                          </div>
+
+                          </div>
+                          </div>
+                      </div>
+                    <h2 class="title">Contributions</h2>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">{{form.age.label}}</label>
+                                    <div class="input--style-4"><div class="form-field">{{ form.age(size=20) }}</div></div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">{{form.expenses.label}}</label>
+                                    <div class="input--style-4"><div class="form-field">{{ form.expenses(size=20) }}</div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                          <div class="col-2">
+                              <div class="input-group">
+                                  <label class="label">{{form.net_worth.label}}</label>
+                                  <div class="explanation">assets - liabilities</div>
+                                  <div class="input--style-4"><div class="form-field">{{ form.net_worth(placeholder=20000) }}</div></div>
+                              </div>
+                          </div>
+                          <div class="col-2">
+                              <div class="input-group">
+                                  <label class="label">{{form.withdrawal_rate.label}}</label>
+                                  <div class="explanation">Planned annual percentage of savings withdrawn in retirement - <a href="https://en.wikipedia.org/wiki/Trinity_study">trinity study</a></div>
+                                    <div class="input--style-4"><div class="form-field">{{ form.withdrawal_rate(placeholder="4") }}</div></div>
+                              </div>
+                          </div>
+                        </div>
+                          <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">{{form.investment_percent.label}}</label>
+                                    <div class="explanation">Percentage of savings put toward investments</div>
+                                    <div class="input--style-4"><div class="form-field">{{ form.investment_percent(placeholder="80") }}</div></div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">{{form.investment_rate.label}}</label>
+                                    <div class=explanation>Expected annual rate of return - <a href="https://www.nerdwallet.com/blog/investing/average-stock-market-return/">Historical Stock Market Average</a></div>
+                                    <div class="input--style-4"><div class="form-field">{{ form.investment_rate(placeholder="10") }}</div></div>
+                                </div>
+                            </div>
+                          </div>
+                          <div class="row row-space">
+                              <div class="col-2">
+                                  <div class="input-group">
+                                      <label class="label">{{form.cash_percent.label}}</label>
+                                      <div class="input--style-4"><div class="form-field">{{ form.cash_percent(placeholder ="20") }}</div></div>
+                                  </div>
+                              </div>
+                              <div class="col-2">
+                                  <div class="input-group">
+                                      <label class="label">{{form.cash_rate.label}}</label>
+                                      <div class="explanation"><a href="https://data.bls.gov/timeseries/CUUR0000SA0L1E?output_view=pct_12mths">U.S. Average Inflation Rates</a></div>
+                                      <div class="input--style-4"><div class="form-field">{{ form.cash_rate(placeholder="2")}}</div></div>
+                                  </div>
+                              </div>
+                           </div>
+                        <div class="p-t-15">
+                            <button class="btn btn--radius-2 btn--blue" type="submit" onClick=md()>Submit</button>
+                        </div>
+                    </form>
+                    <div>
+                      {% if request.method=='POST' %}
+                        <div class="row" style="height:100px">
+                            <!--<p class="center-text">Ad Goes Here</p>-->
+                        </div>
+                        {% if form.net_income.data %}
+                          <div class="row"></div>
+                          <div class="row">
+                            Net Income: {{ net_income }}
+                          </div>
+                        {% elif form.state.data %}
+                          <div class="row"><br></br></div>
+                          <div class="row">
+                            <p></p>
+                            <p class = "center-text">
+                              Federal Tax: {{ fed_tax }}
+                            </p>
+                          </div>
+                          <div class="row">
+                            <p class="center-text">
+                              State Tax: {{ state_tax }}
+                            </p>
+                          </div>
+                          <div class="row">
+                            <p class="center-text">
+                              Fica Tax: {{ fica_tax }}
+                            </p>
+                          </div>
+                          <div class="row"></div>
+                          <div class="row">
+                            <p class="center-text result">
+                              Net Income: {{ net_income }}
+                            </p>
+                          </div>
+                          <div class="row"><br></br></div>
+                        {% else %}
+                          <p></p>
+                        {% endif %}
+                        <div class= "row">
+                          <p class="center-text">You can reach financial independence in</p>
+                          <p class="center-text result">{{ fi }} years at age {{ fi_age }}</p>
+                          <p><br></br></p>
+                        </div>
+                        <div class="row"><br></br></div>
+                        <div class="row">
+                          <p class="center-text">With a Net Worth of</p>
+                          <p class="center-text result">{{nw}}</p>
+                        </div>
+                        <div class="row"><br></br></div>
+                        <div class="row">
+                          <div class="row center-text">
+                            <canvas id="chart" class="center-text"></canvas>
+                          </div>
+                        </div>
+                      {% endif %}
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="../static/vendor/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="../static/vendor/select2/select2.min.js"></script>
+    <script src="../static/vendor/datepicker/moment.min.js"></script>
+    <script src="../static/vendor/datepicker/daterangepicker.js"></script>
+
+    <!-- Main JS-->
+    <script src="../static/js/global.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
+
+    <script>
+    // Global parameters:
+    // do not resize the chart canvas when its container does (keep at 600x400px)
+    Chart.defaults.global.responsive = false;
+
+    // define the chart data
+    var chartData = {
+      labels : [{% for item in x %}
+                 "{{item}}",
+                {% endfor %}],
+      datasets : [{
+          label: "F.I. Threshold at a \n{{ withdrawal_rate_str }}% Withdrawal Rate",
+          data: {{ expenses }},
+          type: 'line'
+        },
+        {
+          label: '{{ legend }}',
+          fill: false,
+          lineTension: 0.1,
+          backgroundColor: "rgba(75,192,192,0.4)",
+          borderColor: "rgba(75,192,192,1)",
+          borderCapStyle: 'butt',
+          borderDash: [],
+          borderDashOffset: 0.0,
+          borderJoinStyle: 'miter',
+          pointBorderColor: "rgba(75,192,192,1)",
+          pointBackgroundColor: "#fff",
+          pointBorderWidth: 1,
+          pointHoverRadius: 5,
+          pointHoverBackgroundColor: "rgba(75,192,192,1)",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointHoverBorderWidth: 2,
+          pointRadius: 2,
+          pointHitRadius: 10,
+          data : [{% for item in y %}
+                    {{item}},
+                  {% endfor %}],
+          spanGaps: false
+      }]
+    }
+
+    // get chart canvas
+    var ctx = document.getElementById("chart").getContext("2d");
+
+    // create the chart using the chart canvas
+    var mychart = new Chart(ctx, {
+      type: 'line',
+      data: chartData,
+      options : {
+        // tooltips: {
+        //   callbacks {
+        //     label: function(value, index, values) {
+        //       if(parseInt(value) >= 1000){
+        //         return '$' + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        //       } else {
+        //         return '$' + value;
+        //       }
+        //     }
+        //   }
+        // },
+        scales: {
+          yAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Net Worth'
+            },
+            ticks: {
+              beginAtZero: true,
+              callback: function(value, index, values) {
+                if(parseInt(value) >= 1000){
+                  return '$' + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                } else {
+                  return '$' + value;
+                }
+              }
+            }
+          }],
+          xAxes: [ {
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Year'
+            },
+            ticks: {
+              userCallback: function(item, index) {
+                if (index%2) return "";
+                return item;
+              },
+              autoSkip: false,
+              major: {
+                fontStyle: 'bold',
+                fontColor: '#FF0000'
+              }
+            }
+          }]
+        }
+      }
+    });
+    </script>
+
+    <script>
+    function md()
+    {
+      //window.location.hash="code";
+      window.scrollTo(0, document.body.scrollHeight);
+      $("html, body").animate({ scrollTop: $(document).height() }, "slow");
+
+
+    }
+    </script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
+<!-- end document-->
