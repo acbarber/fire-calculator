@@ -1,1 +1,3 @@
 taxee_creds.json
+*.ipynb
+__pycache__
