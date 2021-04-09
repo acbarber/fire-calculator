@@ -1,3 +1,4 @@
 taxee_creds.json
 *.ipynb
 __pycache__
+.ipynb_checkpoints
